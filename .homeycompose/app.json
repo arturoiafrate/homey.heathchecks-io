@@ -1,0 +1,28 @@
+{
+  "id": "it.arturoiafrate.heathchecks-io",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Healthchecks"
+  },
+  "description": {
+    "en": "Unofficial Healthchecks.io integration. Simple and Effective Cron Job Monitoring"
+  },
+  "category": [
+    "internet"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Arturo Iafrate",
+    "email": "arturo.iafrate@gmail.com"
+  }
+}

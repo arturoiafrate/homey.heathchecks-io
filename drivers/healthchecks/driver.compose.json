@@ -1,0 +1,44 @@
+{
+  "name": {
+    "en": "HealthChecks"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "alarm_generic",
+    "button"
+  ],
+  "capabilitiesOptions": {
+    "alarm_generic": {
+      "title": "Offline alert",
+      "preventInsights": true,
+      "preventTag": true
+    },
+    "button": {
+      "title": "Check status now",
+      "preventInsights": true,
+      "preventTag": true
+    }
+  },
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

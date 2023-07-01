@@ -1,0 +1,18 @@
+[
+    {
+      "id": "UUID",
+      "type": "text",
+      "label": { "en": "UUID" },
+      "value": "",
+      "hint": { "en": "The ping url UUID given by Healthchecks.io" }
+    },
+    {
+        "id": "interval",
+        "type": "number",
+        "label": { "en": "Ping interval" },
+        "value": 360,
+        "min": 60,
+        "max": 21600,
+        "units": { "en": "seconds" }
+      }
+  ]
