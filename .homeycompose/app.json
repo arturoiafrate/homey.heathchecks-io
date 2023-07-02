@@ -3,26 +3,53 @@
   "version": "1.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
+  "brandColor": "#4f8df0",
+  "homepage": "https://github.com/arturoiafrate",
   "platforms": [
     "local"
   ],
   "name": {
-    "en": "Healthchecks"
+    "en": "HealthChecks"
   },
   "description": {
-    "en": "Unofficial Healthchecks.io integration. Simple and Effective Cron Job Monitoring"
+    "en": "Unofficial Healthchecks.io integration. Simple and Effective Cron Job Monitoring",
+    "it": "Integrazione non ufficiale con il servizio Healthchecks.io. Monitoraggio Cron Job semplice ed efficace"
   },
   "category": [
     "internet"
   ],
   "permissions": [],
   "images": {
-    "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png",
-    "xlarge": "/assets/images/xlarge.png"
+    "small": "/assets/images/small.jpg",
+    "large": "/assets/images/large.jpg",
+    "xlarge": "/assets/images/xlarge.jpg"
   },
   "author": {
     "name": "Arturo Iafrate",
     "email": "arturo.iafrate@gmail.com"
-  }
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Arturo Iafrate",
+        "email": "arturo.iafrate@gmail.com"
+      }
+    ]
+  },
+  "tags": {
+    "en": [
+      "Internet",
+      "Tools",
+      "Ping",
+      "Monitoring"
+    ],
+    "it": [
+      "Internet",
+      "Tools",
+      "Ping",
+      "Monitoraggio"
+    ]
+  },
+  "source": "https://github.com/arturoiafrate/homey.heathchecks-io",
+  "support": "https://github.com/arturoiafrate/homey.heathchecks-io/issues"
 }

@@ -70,6 +70,8 @@ class HealthChecksDevice extends Device {
    */
   async onDeleted() {
     this.#pollerStop();
+    let id = this.getData().id;
+    this.homey.app.removeDevice(id);
   }
 
   #doHealthChecks(){
