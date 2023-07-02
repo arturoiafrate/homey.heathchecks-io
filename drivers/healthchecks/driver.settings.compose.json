@@ -2,17 +2,29 @@
     {
       "id": "UUID",
       "type": "text",
-      "label": { "en": "UUID" },
+      "label": { 
+        "en": "UUID",
+        "it": "UUID"
+      },
       "value": "",
-      "hint": { "en": "The ping url UUID given by Healthchecks.io" }
+      "hint": {
+        "en": "The ping url UUID given by Healthchecks.io",
+        "it": "L'UUID della url di ping fornita da Healthchecks.io"
+      }
     },
     {
         "id": "interval",
         "type": "number",
-        "label": { "en": "Ping interval" },
+        "label": {
+          "en": "Ping interval",
+          "it": "Intervallo di ping"
+        },
         "value": 360,
         "min": 60,
         "max": 21600,
-        "units": { "en": "seconds" }
+        "units": {
+          "en": "seconds",
+          "it": "secondi"
+        }
       }
   ]

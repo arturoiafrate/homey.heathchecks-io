@@ -1,0 +1,4 @@
+{
+    "settings_scheduling_ok": "HealthChecks.io verrà invocato ogni __interval__ secondi",
+    "settings_scheduling_ko": "HealthChecks.io non verrà invocato"
+}

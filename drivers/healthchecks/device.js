@@ -52,9 +52,9 @@ class HealthChecksDevice extends Device {
     this.#pollerStop();
     if(!this.#isEmpty(this.#uuid)) {
       this.#pollerStart();
-      return 'HealthCheck.io will be called every ' + this.#interval + ' seconds';
+      return this.homey.__("settings_scheduling_ok", { interval: this.#interval });
     } else {
-      return 'HealthCheck.io will not be called';
+      return this.homey.__("settings_scheduling_ko");
     }
   }
 

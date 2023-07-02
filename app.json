@@ -29,7 +29,8 @@
   "drivers": [
     {
       "name": {
-        "en": "HealthChecks"
+        "en": "Healthchecks",
+        "it": "Healthchecks"
       },
       "class": "sensor",
       "capabilities": [
@@ -38,12 +39,18 @@
       ],
       "capabilitiesOptions": {
         "alarm_generic": {
-          "title": "Offline alert",
+          "title": {
+            "en": "Offline alert",
+            "it": "Allarme offline"
+          },
           "preventInsights": true,
           "preventTag": true
         },
         "button": {
-          "title": "Check status now",
+          "title": {
+            "en": "Check status now",
+            "it": "Verifica lo stato ora"
+          },
           "preventInsights": true,
           "preventTag": true
         }
@@ -76,24 +83,28 @@
           "id": "UUID",
           "type": "text",
           "label": {
-            "en": "UUID"
+            "en": "UUID",
+            "it": "UUID"
           },
           "value": "",
           "hint": {
-            "en": "The ping url UUID given by Healthchecks.io"
+            "en": "The ping url UUID given by Healthchecks.io",
+            "it": "L'UUID della url di ping fornita da Healthchecks.io"
           }
         },
         {
           "id": "interval",
           "type": "number",
           "label": {
-            "en": "Ping interval"
+            "en": "Ping interval",
+            "it": "Intervallo di ping"
           },
           "value": 360,
           "min": 60,
           "max": 21600,
           "units": {
-            "en": "seconds"
+            "en": "seconds",
+            "it": "secondi"
           }
         }
       ]

@@ -1,6 +1,7 @@
 {
   "name": {
-    "en": "HealthChecks"
+    "en": "Healthchecks",
+    "it": "Healthchecks"
   },
   "class": "sensor",
   "capabilities": [
@@ -9,12 +10,18 @@
   ],
   "capabilitiesOptions": {
     "alarm_generic": {
-      "title": "Offline alert",
+      "title": {
+          "en": "Offline alert",
+          "it": "Allarme offline"
+        },
       "preventInsights": true,
       "preventTag": true
     },
     "button": {
-      "title": "Check status now",
+      "title": {
+        "en": "Check status now",
+        "it": "Verifica lo stato ora"
+      },
       "preventInsights": true,
       "preventTag": true
     }
