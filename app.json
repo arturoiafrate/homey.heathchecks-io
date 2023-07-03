@@ -1,10 +1,10 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "it.arturoiafrate.heathchecks-io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "brandColor": "#4f8df0",
+  "brandColor": "#002B00",
   "homepage": "https://github.com/arturoiafrate",
   "platforms": [
     "local"
@@ -13,8 +13,8 @@
     "en": "HealthChecks"
   },
   "description": {
-    "en": "Unofficial Healthchecks.io integration. Simple and Effective Cron Job Monitoring",
-    "it": "Integrazione non ufficiale con il servizio Healthchecks.io. Monitoraggio Cron Job semplice ed efficace"
+    "en": "Simple and Effective Cron Job Monitoring",
+    "it": "Monitoraggio Cron Job semplice ed efficace"
   },
   "category": [
     "internet"
@@ -87,9 +87,9 @@
       ],
       "connectivity": [],
       "images": {
-        "small": "/drivers/healthchecks/assets/images/small.jpg",
-        "large": "/drivers/healthchecks/assets/images/large.jpg",
-        "xlarge": "/drivers/healthchecks/assets/images/xlarge.jpg"
+        "small": "/drivers/healthchecks/assets/images/small.png",
+        "large": "/drivers/healthchecks/assets/images/large.png",
+        "xlarge": "/drivers/healthchecks/assets/images/xlarge.png"
       },
       "pair": [
         {
