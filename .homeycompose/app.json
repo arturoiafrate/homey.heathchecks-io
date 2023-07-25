@@ -1,6 +1,6 @@
 {
   "id": "it.arturoiafrate.heathchecks-io",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#002B00",
