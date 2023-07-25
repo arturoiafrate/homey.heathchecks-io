@@ -19,12 +19,12 @@ class HealthChecksDevice extends Device {
     this.#interval = settings.interval;
     this.#hcapi = new hcapi();
     this.registerCapabilityListener("button", async () => {
-      this.#doHealthChecks();
+      this.#doHealthChecks();//Do a health check when the button is pressed
     });
+    this.#pollerStop();
     if(!this.#isEmpty(this.#uuid)) {
-      this.#pollerStart();
+      this.#pollerStart();//If the UUID is set, start the poller
     }
-    
   }
 
   /**
@@ -41,7 +41,7 @@ class HealthChecksDevice extends Device {
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    changedKeys.forEach((settingKey) => {
+    changedKeys.forEach((settingKey) => {//Bind the new settings to the device
       if(settingKey === 'UUID') {
         this.#uuid = newSettings[settingKey];
       }
@@ -49,9 +49,10 @@ class HealthChecksDevice extends Device {
         this.#interval = newSettings[settingKey];
       }
     });
-    this.#pollerStop();
+    this.#pollerStop(); //Stop the poller
     if(!this.#isEmpty(this.#uuid)) {
       this.#pollerStart();
+      this.#doHealthChecks();//Do a health check when the settings are changed
       return this.homey.__("settings_scheduling_ok", { interval: this.#interval });
     } else {
       return this.homey.__("settings_scheduling_ko");
@@ -75,23 +76,52 @@ class HealthChecksDevice extends Device {
   }
 
   #doHealthChecks(){
+    console.log("Doing health checks...");
     this.#hcapi.ping(this.#uuid, ()=>{
       this.setCapabilityValue('alarm_generic', false);
+      if(this.retryPoller){//If the retry poller is running, stop it
+        this.#retryPollerStop();
+      }
     }, () => {
       this.setCapabilityValue('alarm_generic', true);
+      if(!this.retryPoller){//If the retry poller is not already running, start it
+        this.#retryPollerStart();
+      }
     });
   }
 
+  //Start a poller to do health checks
   #pollerStart(){
-    this.poller = setInterval(this.#doHealthChecks.bind(this), (this.#interval * 1000));
+    this.poller = this.homey.setInterval(this.#doHealthChecks.bind(this), (this.#interval * 1000));
+    console.log("Main poller started with id: " + this.poller);
   }
 
+  //Start a second poller to do health checks. This is used when the device goes offline to check if it is back online
+  #retryPollerStart(){
+    this.retryPoller = this.homey.setInterval(this.#doHealthChecks.bind(this), 120000); //Every 2 minutes
+    console.log("Retry poller started with id: " + this.retryPoller);
+  }
+
+  //Stop the retry poller if it is running
+  #retryPollerStop(){
+    if(this.retryPoller){
+      this.homey.clearInterval(this.retryPoller);
+      console.log("Retry poller stopped.");
+    }
+    this.retryPoller = undefined;
+  }
+
+  //Stop the poller if it is running
   #pollerStop(){
     if(this.poller){
-      clearInterval(this.poller);
+      this.homey.clearInterval(this.poller);
+      console.log("Main poller stopped.");
     }
+    this.poller = undefined;
+    this.#retryPollerStop();
   }
 
+  //Check if a variable is empty/null/undefined
   #isEmpty(arg){
     return ( arg == undefined || arg == null || arg.length === 0 || (typeof arg === 'object' && Object.keys(arg).length === 0) );
   }
