@@ -6,6 +6,7 @@ const hcapi = require('../../healthchecks/hcapi');
 class HealthChecksDevice extends Device {
 
   #uuid;
+  #port;
   #interval;
   #hcapi;
   
@@ -17,12 +18,14 @@ class HealthChecksDevice extends Device {
     const settings = this.getSettings();
     this.#uuid = settings.UUID;
     this.#interval = settings.interval;
+    this.#port = settings.port;
     this.#hcapi = new hcapi();
     this.registerCapabilityListener("button", async () => {
       this.#doHealthChecks();//Do a health check when the button is pressed
     });
     this.#pollerStop();
     if(!this.#isEmpty(this.#uuid)) {
+      this.#hcapi.customize({uuid: this.#uuid, port: this.#port});
       this.#pollerStart();//If the UUID is set, start the poller
     }
   }
@@ -48,8 +51,12 @@ class HealthChecksDevice extends Device {
       if(settingKey === 'interval') {
         this.#interval = newSettings[settingKey];
       }
+      if(settingKey === 'port') {
+        this.#port = newSettings[settingKey];
+      }
     });
     this.#pollerStop(); //Stop the poller
+    this.#hcapi.customize({uuid: this.#uuid, port: this.#port});
     if(!this.#isEmpty(this.#uuid)) {
       this.#pollerStart();
       this.#doHealthChecks();//Do a health check when the settings are changed
@@ -76,8 +83,8 @@ class HealthChecksDevice extends Device {
   }
 
   #doHealthChecks(){
-    console.log("Doing health checks...");
-    this.#hcapi.ping(this.#uuid, ()=>{
+    this.#hcapi.customize({uuid: this.#uuid, port: this.#port});
+    this.#hcapi.ping(()=>{
       this.setCapabilityValue('alarm_generic', false);
       if(this.retryPoller){//If the retry poller is running, stop it
         this.#retryPollerStop();
@@ -93,20 +100,17 @@ class HealthChecksDevice extends Device {
   //Start a poller to do health checks
   #pollerStart(){
     this.poller = this.homey.setInterval(this.#doHealthChecks.bind(this), (this.#interval * 1000));
-    console.log("Main poller started with id: " + this.poller);
   }
 
   //Start a second poller to do health checks. This is used when the device goes offline to check if it is back online
   #retryPollerStart(){
     this.retryPoller = this.homey.setInterval(this.#doHealthChecks.bind(this), 120000); //Every 2 minutes
-    console.log("Retry poller started with id: " + this.retryPoller);
   }
 
   //Stop the retry poller if it is running
   #retryPollerStop(){
     if(this.retryPoller){
       this.homey.clearInterval(this.retryPoller);
-      console.log("Retry poller stopped.");
     }
     this.retryPoller = undefined;
   }
@@ -115,7 +119,6 @@ class HealthChecksDevice extends Device {
   #pollerStop(){
     if(this.poller){
       this.homey.clearInterval(this.poller);
-      console.log("Main poller stopped.");
     }
     this.poller = undefined;
     this.#retryPollerStop();

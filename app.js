@@ -1,13 +1,13 @@
 'use strict';
 
 const Homey = require('homey');
+const { Log } = require('homey-log');
 
 class HealthChecksApp extends Homey.App {
 
-  /**
-   * onInit is called when the app is initialized.
-   */
-  async onInit() {}
+  async onInit() {
+    this.homeyLog = new Log({ homey: this.homey });
+  }
 
 }
 
