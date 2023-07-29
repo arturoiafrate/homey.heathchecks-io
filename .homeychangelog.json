@@ -4,5 +4,8 @@
   },
   "1.1.1": {
     "en": "replacing native setInterval and clearInterval with native homey ones. If an offline is detected, an automatic healthcheck is performed every 2 minutes until the connection is restored"
+  },
+  "1.2.0": {
+    "en": "Added the possibility to configure the entire URL and port for healthchecks instead of the only UUID. Added the integration with Sentry for crash reporting."
   }
 }

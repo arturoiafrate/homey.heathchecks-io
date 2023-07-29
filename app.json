@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "it.arturoiafrate.heathchecks-io",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#002B00",
@@ -115,8 +115,8 @@
           },
           "value": "",
           "hint": {
-            "en": "The ping url UUID given by Healthchecks.io or the entire URL",
-            "it": "L'UUID della url di ping fornita da Healthchecks.io oppure la URL completa"
+            "en": "The ping URL given by Healthchecks.io or the only UUID",
+            "it": "La URL di ping fornita da Healthchecks.io oppure il solo UUID."
           }
         },
         {
@@ -127,8 +127,8 @@
             "it": "Porta HTTP(S)"
           },
           "hint": {
-            "en": "If left blank the default port will be used (80 for HTTP, 443 for HTTPS)",
-            "it": "Se non specificata verrà usata la porta di default (80 per HTTP, 443 per HTTPS)"
+            "en": "If left blank or zero (0) the default port will be used (80 for HTTP, 443 for HTTPS)",
+            "it": "Se non specificata o impostata a zero (0) verrà usata la porta di default (80 per HTTP, 443 per HTTPS)"
           }
         },
         {
