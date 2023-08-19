@@ -25,8 +25,8 @@ class HealthChecksDevice extends Device {
     });
     this.#pollerStop();
     if(!this.#isEmpty(this.#uuid)) {
-      this.#hcapi.customize({uuid: this.#uuid, port: this.#port});
-      this.#pollerStart();//If the UUID is set, start the poller
+      this.#doHealthChecks()//Do a health check when the device is initialized, for example on homey reboot
+      this.#pollerStart();//then, start the poller
     }
   }
 
